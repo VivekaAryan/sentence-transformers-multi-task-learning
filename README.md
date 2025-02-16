@@ -34,6 +34,23 @@ conda activate my_env_name
 
 ---
 
+## Running the Training Script
+Run the following command to train the model:
+```sh
+python src/train.py --epochs 100 --lr 2e-5
+```
+Training progress will be printed every **10 epochs**.
+
+---
+
+## Running the Inference Script
+Run the following command to get prediction on a test sentences:
+```sh
+python src/inference.py
+```
+
+---
+
 ## Dataset
 The dataset consists of **30 manually curated examples**, split into:
 - **15 Sports sentences** (5 Negative, 5 Neutral, 5 Positive)
@@ -66,3 +83,4 @@ Example:
 ## License
 This project is licensed under the MIT License.
 
+---
