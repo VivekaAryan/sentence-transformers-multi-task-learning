@@ -1,1 +1,68 @@
-# sentence-transformers-multi-task-learning
+# Sentence Transformer Multi-Task Learning
+
+## Overview
+This project implements a **multi-task learning model** using a **shared transformer backbone** for:
+1. **Sentence Classification** (Sports vs. Politics)
+2. **Sentiment Analysis** (Negative, Neutral, Positive)
+
+The model leverages **`sentence-transformers`** to extract embeddings and utilizes **task-specific classification heads**.
+
+---
+
+## Installation
+To set up the required dependencies, install the packages from `requirements.txt`:
+```sh
+pip install -r requirements.txt
+```
+
+Alternatively, if using Conda:
+```sh
+conda env create -f environment.yml
+conda activate my_env_name
+```
+
+---
+
+## Model Architecture
+- **Backbone:** `all-MiniLM-L6-v2` (Pretrained Sentence Transformer)
+- **Task-Specific Heads:**
+  - **Sentence Classification Head** (Binary: Sports vs. Politics)
+  - **Sentiment Analysis Head** (Negative, Neutral, Positive)
+- **Loss Function:** `CrossEntropyLoss`
+- **Optimizer:** `Adam (lr=2e-5)`
+- **Training Epochs:** `100`
+
+---
+
+## Dataset
+The dataset consists of **30 manually curated examples**, split into:
+- **15 Sports sentences** (5 Negative, 5 Neutral, 5 Positive)
+- **15 Politics sentences** (5 Negative, 5 Neutral, 5 Positive)
+
+Example:
+```plaintext
+"The Lakers suffered a devastating defeat in the NBA playoffs."  # Sports (Negative)
+"Congress passed a new climate change bill this week."  # Politics (Neutral)
+"Lewis Hamilton won the Formula 1 Grand Prix."  # Sports (Positive)
+```
+
+---
+
+## Evaluation Metrics
+- **Sentence Classification Accuracy**: Measures correct classification of Sports vs. Politics.
+- **Sentiment Accuracy**: Measures correct classification into Negative, Neutral, or Positive.
+- **Loss Tracking**: Joint multi-task loss is monitored throughout training.
+
+---
+
+## Assumptions & Design Decisions
+- **Frozen Transformer Backbone**: Prevents unnecessary fine-tuning, making training efficient.
+- **Precomputed Sentence Embeddings**: Avoids redundant encoding per epoch.
+- **Joint Multi-Task Loss**: Balances classification and sentiment analysis learning.
+- **Epoch Printing Every 10 Steps**: Reduces log clutter for readability.
+
+---
+
+## License
+This project is licensed under the MIT License.
+
