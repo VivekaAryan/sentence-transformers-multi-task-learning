@@ -26,6 +26,8 @@ pip install -r requirements.txt
 - **Optimizer:** `Adam (lr=2e-3)`
 - **Training Epochs:** `100`
 
+![Model Architecture](src/images/architecture.png)
+
 ---
 
 ## Running the Training Script
