@@ -64,6 +64,6 @@ for epoch in range(epochs):
         print(f"Epoch {epoch+1} | Loss A: {loss_A.item():.4f} | Loss B: {loss_B.item():.4f} | Total Loss: {total_loss.item():.4f} | Acc A: {acc_A:.4f} | Acc B: {acc_B:.4f}")
 
 
-# ✅ Save the trained model
+# Save the trained model
 torch.save(multi_task_model.state_dict(), args.save_path)
 print(f"Model saved to {args.save_path}")

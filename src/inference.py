@@ -31,7 +31,7 @@ base_model = SentenceTransformer('all-MiniLM-L6-v2').to(device)
 multi_task_model = MultiTaskModel(base_model).to(device)
 multi_task_model.load_state_dict(torch.load(args.model_path, map_location=device))
 multi_task_model.eval()
-print(f"✅ Model loaded from {args.model_path}")
+print(f"Model loaded from {args.model_path}")
 
 def predict(sentences):
     """Runs inference on multiple sentences and returns classification and sentiment labels."""

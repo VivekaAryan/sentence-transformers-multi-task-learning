@@ -80,6 +80,29 @@ Example:
 
 ---
 
+
+## Running with Docker
+To containerize the model and run training/inference within Docker, follow these steps:
+
+### **1️. Build the Docker Image**
+```sh
+docker build -t multi-task-nlp .
+```
+
+### **2️. Run Training Inside Docker**
+```sh
+docker run --rm --gpus all multi-task-nlp
+```
+Note: This will train the model and save it to `saved_models/multi_task_model.pth`.
+
+### **3️. Run Inference Inside Docker**
+```sh
+docker run --rm multi-task-nlp python src/inference.py
+```
+Note: This runs inference using the test file `test_sentences.txt`.
+
+---
+
 ## License
 This project is licensed under the MIT License.
 
