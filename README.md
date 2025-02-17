@@ -7,6 +7,8 @@ This project implements a **multi-task learning model** using a **shared transfo
 
 The model leverages **`sentence-transformers`** to extract embeddings and utilizes **task-specific classification heads**.
 
+Note: Answers for each task in `main_notebook.ipynb`.
+
 ---
 
 ## Installation
