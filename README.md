@@ -15,12 +15,6 @@ To set up the required dependencies, install the packages from `requirements.txt
 pip install -r requirements.txt
 ```
 
-Alternatively, if using Conda:
-```sh
-conda env create -f environment.yml
-conda activate my_env_name
-```
-
 ---
 
 ## Model Architecture
@@ -29,7 +23,7 @@ conda activate my_env_name
   - **Sentence Classification Head** (Binary: Sports vs. Politics)
   - **Sentiment Analysis Head** (Negative, Neutral, Positive)
 - **Loss Function:** `CrossEntropyLoss`
-- **Optimizer:** `Adam (lr=2e-5)`
+- **Optimizer:** `Adam (lr=2e-3)`
 - **Training Epochs:** `100`
 
 ---
@@ -37,7 +31,7 @@ conda activate my_env_name
 ## Running the Training Script
 Run the following command to train the model:
 ```sh
-python src/train.py --epochs 100 --lr 2e-5
+python src/train.py
 ```
 Training progress will be printed every **10 epochs**.
 
@@ -60,24 +54,18 @@ Example:
 ```plaintext
 "The Lakers suffered a devastating defeat in the NBA playoffs."  # Sports (Negative)
 "Congress passed a new climate change bill this week."  # Politics (Neutral)
-"Lewis Hamilton won the Formula 1 Grand Prix."  # Sports (Positive)
+"Sebastian Vettel won the Formula 1 Grand Prix."  # Sports (Positive)
 ```
-
----
-
-## Evaluation Metrics
-- **Sentence Classification Accuracy**: Measures correct classification of Sports vs. Politics.
-- **Sentiment Accuracy**: Measures correct classification into Negative, Neutral, or Positive.
-- **Loss Tracking**: Joint multi-task loss is monitored throughout training.
 
 ---
 
 ## Assumptions & Design Decisions
 - **Frozen Transformer Backbone**: Prevents unnecessary fine-tuning, making training efficient.
 - **Precomputed Sentence Embeddings**: Avoids redundant encoding per epoch.
-- **Joint Multi-Task Loss**: Balances classification and sentiment analysis learning.
-- **Epoch Printing Every 10 Steps**: Reduces log clutter for readability.
-
+- **Sentence Classification Accuracy**: Measures correct classification of Sports vs. Politics.
+- **Sentiment Accuracy**: Measures correct classification into Negative, Neutral, or Positive.
+- **Joint Multi-Task Loss**: Balances classification and sentiment analysis learning by computing Cross Entropy Loss for each task and combing it.
+- **Optimizer**: Using Adam.
 ---
 
 
